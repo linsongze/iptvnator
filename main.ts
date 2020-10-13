@@ -25,7 +25,7 @@ function createWindow(): BrowserWindow {
         frame: false,
         minWidth: 900,
         minHeight: 700,
-        title: '看电视',
+        title: 'IPTVnator',
     });
     const menu = createMenu(win);
     Menu.setApplicationMenu(menu);
