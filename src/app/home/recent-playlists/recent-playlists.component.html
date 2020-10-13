@@ -23,6 +23,7 @@
         <button
             mat-icon-button
             color="primary"
+            *ngIf="item.title != '默认列表'"
             (click)="$event.stopPropagation(); removeClicked.emit(item._id)"
             matTooltip="Remove playlist"
         >

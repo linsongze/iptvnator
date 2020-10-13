@@ -16,6 +16,7 @@ function createWindow(): BrowserWindow {
         webPreferences: {
             nodeIntegration: true,
             allowRunningInsecureContent: serve ? true : false,
+            webSecurity: false
         },
         resizable: true,
         darkTheme: true,
@@ -24,7 +25,7 @@ function createWindow(): BrowserWindow {
         frame: false,
         minWidth: 900,
         minHeight: 700,
-        title: 'IPTVnator',
+        title: '看电视',
     });
     const menu = createMenu(win);
     Menu.setApplicationMenu(menu);
@@ -65,17 +66,17 @@ function createMenu(win: BrowserWindow) {
     const menu = new Menu();
     menu.append(
         new MenuItem({
-            label: 'File',
+            label: '文件',
             submenu: [
                 {
-                    label: 'Add playlist',
+                    label: '添加播放列表',
                     click: () => win.webContents.send('add-playlist-view'),
                 },
                 {
                     type: 'separator',
                 },
                 {
-                    label: 'Exit',
+                    label: '退出',
                     click: () => app.quit(),
                 },
             ],
@@ -99,15 +100,8 @@ function createMenu(win: BrowserWindow) {
 
     menu.append(
         new MenuItem({
-            label: 'Help',
+            label: '帮助',
             submenu: [
-                {
-                    label: 'Report a bug',
-                    click: () =>
-                        shell.openExternal(
-                            'https://github.com/4gray/my-iptv-player-pwa'
-                        ),
-                },
                 {
                     label: 'Open DevTools',
                     click: () => win.webContents.openDevTools(),
@@ -116,7 +110,7 @@ function createMenu(win: BrowserWindow) {
                     type: 'separator',
                 },
                 {
-                    label: 'About',
+                    label: '关于',
                     click: () =>
                         openAboutWindow({
                             icon_path: path.join(

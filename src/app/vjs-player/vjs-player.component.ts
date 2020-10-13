@@ -50,6 +50,7 @@ export class VjsPlayerComponent implements OnInit, OnDestroy {
      */
     ngOnChanges(changes: SimpleChanges): void {
         if (changes.options.previousValue) {
+            console.log("xxxxxxx");
             this.player.src(changes.options.currentValue.sources[0]);
         }
     }

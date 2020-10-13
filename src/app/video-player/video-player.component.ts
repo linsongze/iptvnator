@@ -58,6 +58,7 @@ export class VideoPlayerComponent implements OnInit {
         this.activeChannel$ = this.channelQuery.select((state) => state.active);
 
         this.applySettings();
+
     }
 
     /**
@@ -88,11 +89,17 @@ export class VideoPlayerComponent implements OnInit {
      * @param channel given channel object
      */
     playChannel(channel: Channel): void {
+        if(this.videoPlayer== null) {
+            this.videoPlayer = document.getElementById(
+                'video-player'
+            ) as HTMLVideoElement;
+        }
         if (Hls.isSupported()) {
             console.log('... switching channel to ', channel.name, channel.url);
             this.hls.loadSource(channel.url);
             this.hls.attachMedia(this.videoPlayer);
             this.channelTitle = channel.name;
+            this.videoPlayer.play();
         } else if (
             this.videoPlayer.canPlayType('application/vnd.apple.mpegurl')
         ) {

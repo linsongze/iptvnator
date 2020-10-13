@@ -1,5 +1,5 @@
 <!-- Applications header-->
-<app-header fxLayout="row" title="IPTVnator" subtitle="Please select a playlist from the list or add a new playlist via file upload or via url"></app-header>
+<app-header fxLayout="row" title="" subtitle="请选择最近的播放列表或者新增、上传播放列表"></app-header>
 
 <!-- Tab-based layout -->
 <div fxLayout="row" fxFlexAlign="start start">
@@ -7,7 +7,7 @@
         <mat-tab-group [dynamicHeight]="true" color="primary" backgroundColor="primary" mat-stretch-tabs>
             <mat-tab>
                 <ng-template mat-tab-label>
-                    <mat-icon class="tab-icon">list</mat-icon> Recently added playlists
+                    <mat-icon class="tab-icon">list</mat-icon> 最近的播放列表
                 </ng-template>
                 <app-recent-playlists [playlists]="playlists" (playlistClicked)="getPlaylist($event)"
                     (removeClicked)="removePlaylist($event)">
@@ -15,7 +15,7 @@
             </mat-tab>
             <mat-tab>
                 <ng-template mat-tab-label>
-                    <mat-icon class="tab-icon">attach_file</mat-icon> Add via file upload
+                    <mat-icon class="tab-icon">attach_file</mat-icon> 上传有效的播放列表
                 </ng-template>
                 <ng-template matTabContent>
                     <app-file-upload (fileRejected)="rejectFile($event)" (fileSelected)="handlePlaylist($event)"></app-file-upload>
@@ -23,7 +23,7 @@
             </mat-tab>
             <mat-tab>
                 <ng-template mat-tab-label>
-                    <mat-icon class="tab-icon">link</mat-icon> Add via URL
+                    <mat-icon class="tab-icon">link</mat-icon> 添加有效的播放列表URL
                 </ng-template>
                 <ng-template matTabContent>
                     <app-url-upload (urlAdded)="sendPlaylistsUrl($event)"></app-url-upload>

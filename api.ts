@@ -47,6 +47,22 @@ export class Api {
                 {},
                 { count: 1, title: 1, _id: 1, url: 1, importDate: 1 }
             );
+            if(playlists.length == 0){
+                axios.get("http://dd.laigc.com:10080/linsongze/tv/raw/branch/master/m.m3u").then((result) => {
+                    const array = result.data.split('\n');
+                    const parsedPlaylist = this.parsePlaylist(array);
+                    const playlistObject = this.createPlaylistObject(
+                        "默认列表",
+                        parsedPlaylist,
+                        "http://dd.laigc.com:10080/linsongze/tv/raw/branch/master/m.m3u"
+                    );
+                    this.insertToDb(playlistObject);
+                    event.sender.send('parse-response', {
+                        payload: playlistObject,
+                    });
+                });
+            }
+
             event.sender.send('playlist-all-result', {
                 payload: playlists,
             });

@@ -1,5 +1,5 @@
 {
-  "name": "iptvnator",
+  "name": "IPTVnator",
   "version": "0.2.0",
   "description": "IPTV player application.",
   "homepage": "https://github.com/4gray/my-iptv-player-pwa",
@@ -72,7 +72,7 @@
     "conventional-changelog-cli": "2.0.34",
     "core-js": "3.6.5",
     "cross-env": "7.0.2",
-    "electron": "9.3.1",
+    "electron": "8.5.2",
     "electron-builder": "22.7.0",
     "electron-reload": "1.5.0",
     "eslint": "7.4.0",
@@ -115,6 +115,7 @@
     "about-window": "1.13.4",
     "axios": "0.19.2",
     "custom-electron-titlebar": "3.2.3",
+    "dplayer": "1.26.0",
     "hls.js": "0.14.8",
     "iptv-playlist-parser": "0.5.0",
     "lodash": "4.17.19",
