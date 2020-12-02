@@ -17,7 +17,7 @@ jobs:
       - run: |
           npm install
           npm run build:prod
-          dir release
+          dir
       - uses: actions/upload-artifact@master
         with:
           name: result
