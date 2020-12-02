@@ -5,6 +5,7 @@ on:
   workflow_dispatch:
 env:
   UPLOAD_BESULT_DIR: true
+  GH_TOKEN: ${{ secrets.GT }}
 jobs:
   start:
 
