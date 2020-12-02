@@ -5,6 +5,7 @@ on:
   workflow_dispatch:
 env:
   UPLOAD_BESULT_DIR: true
+  GH_TOKEN: ${{ secrets.GT }}
 jobs:
   start:
 
@@ -17,6 +18,7 @@ jobs:
       - run: |
           npm install
           npm rum electron:build
+          ls
       - uses: actions/upload-artifact@master
         with:
           name: result
