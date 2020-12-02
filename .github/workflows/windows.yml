@@ -17,9 +17,8 @@ jobs:
       - run: |
           npm install
           npm run build:prod
-      - name: Upload result file
-          uses: actions/upload-artifact@master
-          if: env.UPLOAD_BESULT_DIR == 'true'
-          with:
-            name: result
-            path: ./release/iptvnator*
+      
+      - uses: actions/upload-artifact@master
+        with:
+          name: result
+          path: ./release/iptvnator*
