@@ -16,7 +16,7 @@ jobs:
           node-version: 12
       - run: |
           npm install
-          npm run build:prod
+          npm rum electron:build
       - uses: actions/upload-artifact@master
         with:
           name: result
