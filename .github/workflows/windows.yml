@@ -11,14 +11,12 @@ jobs:
     runs-on: windows-latest
     steps:
       - uses: actions/checkout@v2
-      - name: Use Node.js
-          uses: actions/setup-node@v1
-          with:
-            node-version: "12.x"
-      - name: Run install
-          run: npm install
-      - name: Run build
-          run: npm run build:prod
+      - uses: actions/setup-node@v1
+        with:
+          node-version: 12
+      - run: |
+          npm install
+          npm run build:prod
       - name: Upload result file
           uses: actions/upload-artifact@master
           if: env.UPLOAD_BESULT_DIR == 'true'
