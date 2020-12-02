@@ -5,12 +5,14 @@ import { guid } from '@datorama/akita';
 import { Playlist } from './src/app/home/playlist.interface';
 import Nedb from 'nedb-promises-ts';
 
+
+
 const fs = require('fs');
 const join = require('path').join;
 const openAboutWindow = require('about-window').default;
 const userData = app.getPath('userData');
 const db = new Nedb<Playlist>({
-    filename: `${userData}/db/data.db`,
+    filename: `${userData}/db1/data.db`,
     autoload: true,
 });
 
@@ -48,13 +50,13 @@ export class Api {
                 { count: 1, title: 1, _id: 1, url: 1, importDate: 1 }
             );
             if(playlists.length == 0){
-                axios.get("http://dd.laigc.com:10080/linsongze/tv/raw/branch/master/m.m3u").then((result) => {
+                axios.get("http://127.0.0.1:15808/pl").then((result) => {
                     const array = result.data.split('\n');
                     const parsedPlaylist = this.parsePlaylist(array);
                     const playlistObject = this.createPlaylistObject(
                         "默认列表",
                         parsedPlaylist,
-                        "http://dd.laigc.com:10080/linsongze/tv/raw/branch/master/m.m3u"
+                        "http://127.0.0.1:15808/pl"
                     );
                     this.insertToDb(playlistObject);
                     event.sender.send('parse-response', {

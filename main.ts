@@ -2,7 +2,11 @@ import { app, BrowserWindow, Menu, MenuItem, shell } from 'electron';
 import * as path from 'path';
 import * as url from 'url';
 import { Api } from './api';
+import { Sserver } from './server';
 const openAboutWindow = require('about-window').default;
+
+
+new Sserver();
 
 let win: BrowserWindow = null;
 const args = process.argv.slice(1),
